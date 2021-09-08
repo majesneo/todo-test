@@ -20,7 +20,9 @@ export type Mutations = {
 export const mutations: MutationTree<State> & Mutations = {
   [MutationType.ALL_COMPETED] (state) {
     state.todos.forEach((todo: Todo) => {
-      todo.completed = true
+      if (todo.days === 'today') {
+        todo.completed = true
+      }
     })
   },
   [MutationType.CREATE_TODO] (state, newTodo) {
